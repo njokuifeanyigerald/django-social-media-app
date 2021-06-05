@@ -1,0 +1,6 @@
+/feed/__pycache__
+/feed/migrations/__pycache__
+/users/migrations/__pycache__
+/users/__pycache__
+/socialmediaapp/__pycache__
+db.sqlite3
