@@ -152,7 +152,7 @@ def register(request):
     context = {
         'form':form
     }
-    return render(request, 'user/register.html', context)
+    return render(request, 'users/register.html', context)
 
 @login_required
 def edit_profile(request):
