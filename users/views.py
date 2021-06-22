@@ -106,8 +106,8 @@ def delete_friend(request, id):
     friend_profile.friends.remove(user_profile)
     return HttpResponseRedirect(f'/users/{friend_profile.slug}')
 
-@login_required
-def profile_view(request, slug):
+# @login_required
+# def profile_view(request, slug):
     p = Profile.objects.filter(slug=slug).first()
     u = p.user
     send_friend_request = FriendRequest.objects.filter(from_user=p.user)
@@ -122,7 +122,7 @@ def profile_view(request, slug):
 
         # if we have sent him/her a friend request
         if len(FriendRequest.objects.filter(
-            from_user=request.user).filter(to_user=p.user)) ==1:
+            from_user=request.user).filter(to_user=p.user)) == 1:
             button_status = 'friend request sent'
 
         # if we have received a friend request
@@ -130,7 +130,7 @@ def profile_view(request, slug):
             button_status = 'friend request received'
     
     context = {
-        'u': u,
+        # 'u': u,
         'button_status': button_status,
         'friend_list': friends,
         'send_friend_request': send_friend_request,

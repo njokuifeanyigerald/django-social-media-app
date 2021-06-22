@@ -1,0 +1,69 @@
+{% extends 'feed/layout.html' %}
+{% load crispy_forms_tags %}
+{% load static %} 
+{% block cssfiles %}{% endblock cssfiles %}
+{% block searchform %}
+<br>
+<form action="{% url 'search_users'%}" class="form-inline ml-4 my-2 my-lg-0 " method="GET">
+    <input name="q" type="text" placeholder="search users...">
+    <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">
+        search
+    </button>
+</form>
+{% endblock %}
+
+
+{% block content %}
+<br><br>
+<div class="main-content">
+    <div class="conyainer mt-7">
+        <div class="row">
+            <div class="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
+                <div class="card card-profile shadow">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+                            <div class="card-profile-image">
+                                <a href="{{u.profile.image.url}}">
+                                    <img src="{{u.profile.image.url}}"
+                                        class="rounded-circle"
+                                        width="160px"
+                                        height="160px"
+                                    >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                    </div>
+                    <div class="card-body pt-0 pt-md-4">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-profile-stats d-dlex justify-content-center mt-md-5">
+                                    <div>
+                                        <span class="heading">
+                                            {{u.profile.friends.count}}
+                                        </span>
+                                        {% if request.user == u %}
+                                        <span class="description">
+                                            <a href="{% url 'friend_list' %}">
+                                                Friends
+                                            </a>
+                                        </span>
+                                        {% else %}
+                                        <span class="description">
+                                            Friends
+                                        </span>
+                                        {% endif %}
+                                        <!-- <span class="heading">{{post_count}}</span> -->
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
